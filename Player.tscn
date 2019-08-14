@@ -3,11 +3,11 @@
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player/idle 00.png" type="Texture" id=2]
 [ext_resource path="res://sprites/player/fall 00.png" type="Texture" id=3]
-[ext_resource path="res://sprites/player/jump 00.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player/attack 04.png" type="Texture" id=5]
-[ext_resource path="res://sprites/player/attack 05.png" type="Texture" id=6]
-[ext_resource path="res://sprites/player/attack 06.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player/attack 03.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/attack 04.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/attack 05.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/attack 06.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/attack 03.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/jump 00.png" type="Texture" id=8]
 [ext_resource path="res://sprites/player/run 00.png" type="Texture" id=9]
 [ext_resource path="res://sprites/player/run 01.png" type="Texture" id=10]
 [ext_resource path="res://sprites/player/run 03.png" type="Texture" id=11]
@@ -25,15 +25,15 @@ animations = [ {
 "name": "fall",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "jump",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "attack",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "jump",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
@@ -57,9 +57,19 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 11, 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 592
+limit_bottom = 192
+smoothing_enabled = true
+editor_draw_limits = true
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
