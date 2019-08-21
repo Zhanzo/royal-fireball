@@ -5,14 +5,15 @@ const GRAVITY = 10
 const JUMP_POWER = -250
 const FLOOR = Vector2(0, -1)
 const FIREBALL = preload("res://Fireball.tscn")
+const FIREBALLRED = preload("res://FireballRed.tscn")
 
 var velocity = Vector2()
 var on_ground = true
 var is_attacking = false
 var is_dead = false
+var fireball_power = 1
 
 func _physics_process(delta):
-	
 	if not is_dead:
 		if Input.is_action_pressed("ui_right"):
 			if not is_attacking or not on_ground:
@@ -45,7 +46,11 @@ func _physics_process(delta):
 				velocity.x = 0
 			is_attacking = true
 			$AnimatedSprite.play("attack")
-			var fireball = FIREBALL.instance()
+			var fireball = null
+			if fireball_power == 1:
+				fireball = FIREBALL.instance()
+			elif fireball_power == 2:
+				fireball = FIREBALLRED.instance()
 			if sign($Position2D.position.x) == -1:
 				fireball.set_fireball_direction(-1)
 			get_parent().add_child(fireball)
@@ -77,7 +82,7 @@ func dead():
 	is_dead = true
 	velocity = Vector2(0, 0)
 	$AnimatedSprite.play("dead")
-	$CollisionShape2D.call_deferred("set_disabled", true)
+	$CollisionShape2D.set_deferred("disabled", true)
 	$Timer.start()
 
 
@@ -87,3 +92,7 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_Timer_timeout():
 	get_tree().change_scene("TitleScreen.tscn")
+
+
+func crown_power_up():
+	fireball_power = 2

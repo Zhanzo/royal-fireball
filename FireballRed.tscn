@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Fireball.gd" type="Script" id=1]
-[ext_resource path="res://sprites/effects/fireball 00.png" type="Texture" id=2]
-[ext_resource path="res://sprites/effects/fireball 01.png" type="Texture" id=3]
+[ext_resource path="res://FireballRed.gd" type="Script" id=1]
+[ext_resource path="res://sprites/effects/fireball 02.png" type="Texture" id=2]
+[ext_resource path="res://sprites/effects/fireball 03.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,11 +15,8 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 4 )
 
-[node name="Fireball" type="Area2D"]
+[node name="FireballRed" type="Area2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -29,5 +26,5 @@ animation = "shoot"
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-[connection signal="body_entered" from="." to="." method="_on_Fireball_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_FireballRed_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

@@ -2,18 +2,18 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/player/idle 00.png" type="Texture" id=2]
-[ext_resource path="res://sprites/player/hit 00.png" type="Texture" id=3]
-[ext_resource path="res://sprites/player/hit 03.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player/fall 00.png" type="Texture" id=5]
-[ext_resource path="res://sprites/player/jump 00.png" type="Texture" id=6]
-[ext_resource path="res://sprites/player/attack 04.png" type="Texture" id=7]
-[ext_resource path="res://sprites/player/attack 05.png" type="Texture" id=8]
-[ext_resource path="res://sprites/player/attack 06.png" type="Texture" id=9]
-[ext_resource path="res://sprites/player/attack 03.png" type="Texture" id=10]
-[ext_resource path="res://sprites/player/run 00.png" type="Texture" id=11]
-[ext_resource path="res://sprites/player/run 01.png" type="Texture" id=12]
-[ext_resource path="res://sprites/player/run 03.png" type="Texture" id=13]
-[ext_resource path="res://sprites/player/run 02.png" type="Texture" id=14]
+[ext_resource path="res://sprites/player/fall 00.png" type="Texture" id=3]
+[ext_resource path="res://sprites/player/attack 04.png" type="Texture" id=4]
+[ext_resource path="res://sprites/player/attack 05.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player/attack 06.png" type="Texture" id=6]
+[ext_resource path="res://sprites/player/attack 03.png" type="Texture" id=7]
+[ext_resource path="res://sprites/player/run 00.png" type="Texture" id=8]
+[ext_resource path="res://sprites/player/run 01.png" type="Texture" id=9]
+[ext_resource path="res://sprites/player/run 03.png" type="Texture" id=10]
+[ext_resource path="res://sprites/player/run 02.png" type="Texture" id=11]
+[ext_resource path="res://sprites/player/jump 00.png" type="Texture" id=12]
+[ext_resource path="res://sprites/player/hit 00.png" type="Texture" id=13]
+[ext_resource path="res://sprites/player/hit 03.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -22,30 +22,30 @@ animations = [ {
 "name": "idle",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "dead",
-"speed": 24.0
-}, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": false,
 "name": "fall",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": false,
-"name": "jump",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": false,
 "name": "attack",
 "speed": 12.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "run",
 "speed": 12.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
+"name": "jump",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "dead",
+"speed": 24.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -64,11 +64,12 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 1 )
 shape = SubResource( 2 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 11, 2 )
+position = Vector2( 13.8631, 2.3563 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
